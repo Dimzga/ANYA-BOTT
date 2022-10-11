@@ -31,4 +31,4 @@ handler.tags = ['xp']
 
 handler.command = /^(daftar|reg(is(ter))?)$/i
 
-module.exports = handler
+export default handler

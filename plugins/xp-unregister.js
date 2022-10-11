@@ -13,5 +13,5 @@ handler.tags = ['xp']
 handler.command = /^unreg(ister)?$/i
 handler.register = true
 
-module.exports = handler
+export default handler
 

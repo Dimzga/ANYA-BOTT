@@ -17,4 +17,4 @@ handler.help = ['', 'kah'].map(v => 'siapa' + v + ' <teks>')
 handler.tags = ['kerang']
 handler.command = /^siapa(kah)?$/i
 
-module.exports = handler
+export default handler

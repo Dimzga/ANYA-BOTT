@@ -1,13 +1,20 @@
-import instagramGetUrl from 'instagram-url-direct'
-let handler = async (m, { conn, args, usedPrefix, command }) => {
-    if (!args[0]) throw `Use example ${usedPrefix}${command} https://www.instagram.com/p/ByxKbUSnubS/?utm_source=ig_web_copy_link`
-    const results = (await instagramGetUrl(args[0])).url_list[0]
-
-    conn.sendFile(m.chat, results, 'instagram.mp4', `*INSTAGRAM DOWNLOADER*`, m)
+let handler = async (m, { conn, participants, command, text }) => {
+    let who
+    if (!m.isGroup) who = m.sender
+    else {
+        let member = participants.map(u => u.id)
+        who = member[Math.floor(Math.random() * member.length)]
+    }
+    let jawab = `
+*Pertanyaan:* ${command} ${text}?
+*Jawaban:* @${who.replace(/@.+/, '')}
+    `.trim()
+    let saha = [who]
+    let mentionedJid = saha.concat(m.mentionedJid)
+    conn.reply(m.chat, jawab, m, { contextInfo: { mentionedJid } })
 }
-handler.help = ['ig'].map(v => v + ' <url>')
-handler.tags = ['downloader']
+handler.help = ['', 'kah'].map(v => 'siapa' + v + ' <teks>')
+handler.tags = ['kerang']
+handler.command = /^siapa(kah)?$/i
 
-handler.command = /^(ig(dl)?)$/i
-
-export default handler
+module.exports = handler

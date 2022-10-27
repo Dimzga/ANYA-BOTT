@@ -14,6 +14,13 @@
         "test": "node test.js",
         "test2": "nodemon index.js"
     },
+    "name": "example-app",
+    "description": "a really cool app",
+    "version": "1.0.0",
+    "engines": {
+      "node": "18.x"
+    }
+  },
     "keywords": [
         "termux-whatsapp-bot",
         "whatsapp-bot",
